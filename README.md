@@ -1,5 +1,13 @@
 # 🧠 RNN Pipeline for Programming Language Prediction
 
+# 🧠 RNN Pipeline for Programming Language Prediction
+
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red.svg)](https://pytorch.org/)
+[![Course](https://img.shields.io/badge/Course-APS360-orange.svg)](https://engineering.calendar.utoronto.ca/course/aps360h1)
+[![Model](https://img.shields.io/badge/Model-RNN%20%7C%20LSTM%20%7C%20GRU-green.svg)](#)
+
+
 > **APS360 – Applied Fundamentals of Deep Learning**  
 > University of Toronto
 

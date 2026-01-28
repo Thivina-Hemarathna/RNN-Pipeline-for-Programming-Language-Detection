@@ -1,185 +1,145 @@
-🧠 RNN Pipeline for Programming Language Prediction
+# 🧠 RNN Pipeline for Programming Language Prediction
 
-APS360 – Applied Fundamentals of Deep Learning
-University of Toronto
+> **APS360 – Applied Fundamentals of Deep Learning**  
+> University of Toronto
 
-📌 Author: Thivina Suduwa Devage
-📧 Email: thivina.suduwadevage@mail.utoronto.ca
+📌 **Author:** Thivina Suduwa Devage  
+📧 **Email:** thivina.suduwadevage@mail.utoronto.ca  
+🔗 **Repository:** https://github.com/Thivina-Hemarathna/RNN-Pipeline-for-Programming-Language-Detection
 
-🔗 Repository: RNN-Pipeline-for-Programming-Language-Detection
+---
 
-🚀 Project Overview
+## 🚀 Project Overview
 
-Identifying the programming language of a source code snippet is a fundamental problem in software engineering, with applications in:
+Identifying the programming language of a source code snippet is a fundamental problem in software engineering, with applications in code search, repository mining, automated documentation, plagiarism detection, and developer productivity tools.
 
-🔍 Code search & repository mining
+Traditional approaches based on file extensions or keyword matching often fail when dealing with short, incomplete, or noisy code snippets commonly found in forums, logs, and student submissions.
 
-📚 Automated documentation & syntax highlighting
+This project presents a **Recurrent Neural Network (RNN)–based pipeline** that predicts the programming language of a code snippet directly from its raw textual representation, without relying on handcrafted rules.
 
-🧪 Plagiarism detection & educational tooling
+---
 
-⚙️ Developer productivity tools
+## 🧩 Key Idea
 
-While traditional approaches rely on file extensions or keyword matching, they often fail when faced with short, incomplete, or noisy code snippets—common in forums, logs, and student submissions.
+Programming languages exhibit strong sequential structure, including:
 
-This project introduces a Recurrent Neural Network (RNN)–based pipeline that predicts the programming language of a code snippet directly from raw text, without relying on handcrafted rules.
+- Keyword ordering  
+- Punctuation and symbol usage  
+- Indentation and formatting patterns  
 
-🧩 Key Idea
+By modeling code as a **sequence of characters or tokens**, an RNN can learn language-specific syntactic and stylistic patterns and generalize effectively across snippets of varying length.
 
-Programming languages exhibit strong sequential patterns, such as:
+---
 
-Keyword ordering
+## 🏗️ System Architecture
 
-Punctuation and symbols
+<p align="center">
+  <img src="/Project Proposal/RNN_layout.png" alt="RNN Pipeline Diagram" width="650"/>
+</p>
 
-Indentation and formatting styles
+**Pipeline Stages:**
 
-By modeling code as a sequence of characters or tokens, an RNN can learn these patterns and distinguish between languages effectively.
+1. Raw source code snippet input  
+2. Preprocessing and normalization  
+3. Character-level or token-level embedding  
+4. RNN encoder (LSTM or GRU)  
+5. Fully connected classification layer  
+6. Softmax output over programming languages  
 
-🏗️ System Architecture
-<p align="center"> <img src="rnn_pipeline.png" alt="RNN Pipeline Diagram" width="650"/> </p>
+---
 
-Pipeline Stages:
+## 📂 Dataset & Preprocessing
 
-Input: Raw source code snippets
+### Data Sources
+- Public GitHub repositories  
+- Curated datasets such as **CodeSearchNet**
 
-Preprocessing: Cleaning, normalization, and filtering
+### Preprocessing Steps
+- Removal of comments (where appropriate)
+- Whitespace normalization
+- Filtering extremely short or non-informative snippets
+- Optional character-level or token-level representation
 
-Embedding Layer: Converts characters/tokens into dense vectors
+The dataset is split into **training**, **validation**, and **test** sets.
 
-RNN Encoder: LSTM or GRU captures sequential dependencies
+---
 
-Classifier: Fully connected layer with softmax output
+## 🤖 Model Design
 
-Prediction: Programming language probabilities
+### Core Model
+- Recurrent Neural Network (RNN)
+- LSTM or GRU cells
+- Final hidden state used as a fixed-length representation of the code snippet
 
-📂 Dataset & Preprocessing
-📊 Data Sources
+### Output Layer
+- Fully connected layer
+- Softmax activation for multi-class classification
 
-Public GitHub repositories
+---
 
-Curated datasets such as CodeSearchNet
+## 📉 Baseline Model
 
-🛠️ Preprocessing Steps
+To provide a meaningful comparison, a traditional machine learning baseline is implemented using:
 
-Removal of comments (where appropriate)
+- Character-level n-gram features  
+- Multinomial Naive Bayes or Support Vector Machine (SVM)
 
-Whitespace normalization
+This baseline serves as a strong reference point for evaluating the performance of the RNN-based approach.
 
-Filtering extremely short or non-informative snippets
+---
 
-Optional character-level or token-level representation
+## 📈 Evaluation Metrics
 
-The dataset is split into:
+Model performance is evaluated using:
 
-Training
+- Classification accuracy  
+- Confusion matrix  
+- Per-language precision and recall  
 
-Validation
+Performance comparisons are made between classical baselines and deep learning models.
 
-Test sets
+---
 
-🤖 Model Design
-🔹 Core Model
+## ⚖️ Ethical Considerations
 
-Recurrent Neural Network (RNN)
+- All data is sourced from publicly available repositories
+- Licensing terms are respected
+- Potential dataset bias is acknowledged
+- Model predictions should not be used as the sole basis for plagiarism accusations or automated grading without human oversight
 
-LSTM or GRU cells
+---
 
-Learns long-range dependencies in code sequences
+## 🛠️ Technologies Used
 
-Final hidden state used as a fixed-length representation
+- Python  
+- PyTorch  
+- NumPy  
+- Pandas  
+- Scikit-learn  
+- Git & GitHub  
 
-🔹 Output Layer
+---
 
-Fully connected layer
+## 🎯 Project Goals
 
-Softmax activation over programming language classes
+- Build a robust RNN-based programming language classifier  
+- Compare deep learning models with classical baselines  
+- Understand how sequential models capture syntactic patterns in code  
+- Deliver a clean, interpretable, and reproducible ML pipeline  
 
-📉 Baseline Comparison
+---
 
-To evaluate the effectiveness of the RNN model, a baseline classifier is implemented using:
+## 📌 Course Context
 
-Character-level n-gram features
+This project was completed as part of **APS360: Applied Fundamentals of Deep Learning** at the **University of Toronto**.
 
-Naive Bayes or Support Vector Machine (SVM)
+---
 
-This provides a strong, interpretable reference point against which deep learning performance is measured.
+## 🌟 Future Work
 
-📈 Evaluation Metrics
+- Extend to additional programming languages  
+- Experiment with bidirectional RNNs  
+- Compare against transformer-based models (e.g., CodeBERT)  
+- Incorporate syntax-aware tokenization methods  
 
-Model performance is assessed using:
-
-✅ Classification Accuracy
-
-📊 Confusion Matrix
-
-🔁 Per-language Precision & Recall
-
-Comparisons are made between:
-
-Baseline ML models
-
-RNN-based deep learning models
-
-⚖️ Ethical Considerations
-
-All data is sourced from public repositories
-
-Licensing terms are respected
-
-Potential dataset bias (e.g., over-representation of popular languages) is acknowledged
-
-The model should not be used as a sole authority for plagiarism detection or grading decisions
-
-📚 Related Work
-
-This project builds upon established research in programming language identification, including:
-
-N-gram and classical ML methods
-
-Character-level RNNs for code classification
-
-Neural language models for source code
-
-Comparisons with transformer-based models (e.g., CodeBERT)
-
-A full list of references is available in the accompanying report.
-
-🛠️ Technologies Used
-
-Python
-
-PyTorch
-
-NumPy / Pandas
-
-Scikit-learn
-
-Git & GitHub
-
-🎯 Project Goals
-
-✔ Build a robust RNN-based classifier for code snippets
-✔ Compare deep learning against classical baselines
-✔ Understand how sequential models capture code syntax
-✔ Deliver a clean, interpretable, and reproducible pipeline
-
-📌 Course Context
-
-This project is completed as part of APS360: Applied Fundamentals of Deep Learning at the University of Toronto, emphasizing:
-
-End-to-end ML pipelines
-
-Model evaluation & comparison
-
-Ethical considerations in AI
-
-🌟 Future Work
-
-Extend to more programming languages
-
-Experiment with bidirectional RNNs
-
-Compare against transformer-based models
-
-Incorporate syntax-aware tokenization
+---
